@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <p id="test"></p>
+  <p id="test1"></p>
+  
+  <!-- <button onclick="test();">Test</button>
+  <button onclick="test1();">Test1</button> -->
+
+  <button id="btn1">Test</button>
+  <button id="btn2">Test1</button>
+  <input type="text" id="username">
+
+  <script>
+    $('#username').on('keydown',()=>{
+      var value=$('#username').val()
+      // alert(value);
+      $('#test').html(value);
+    })
+
+    $('#btn1').on('click',()=>{
+      alert('welcome')
+        $.post('http://localhost:3001/student/get',{},(data)=>{
+        /* console.log(data);
+        $('#test').html(data[1].name) */
+        data.map(s=>{
+          $('#test').append(s.name+"<br>")
+        })
+      })
+
+    })
+
+    // //By java Script
+    // function test(){
+    //   document.getElementById("test").innerHTML="Hello World"
+    // }
+    
+
+
+    //JQuery
+    // function test1(){
+    //   $('#test1').html("Hello World2")
+    // }
+    // $(document).ready(function(){
+    //   alert('Welcome to my page')
+    // })
+
+    // $('#btn1').on('click',()=>{
+    //   document.getElementById("test").innerHTML="Hello World"
+    // })
+        
+   //JQuery End
+  </script>
+</body>
+</html>
